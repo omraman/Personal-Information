@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <title>Insert data into angular js application</title>
+    <!-- Bootstrap Files-->
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+ 	<script src="bootstrap/jquery.min.js"></script>
+  	 <script src="bootstrap/bootstrap.min.js"></script>
+   	<script src="js/mdb.min.js "></script>
+   	 <link href="css/mdb.min.css" rel="stylesheet">
+   	<!--Bootstrap files end here-->
+   	<!--Include Angular Js Lib-->
+    <script src="js/angular.js"></script>
+    <!-- Angular JS module and controller files-->
+    <script type="text/javascript" src="js/myapp.js"></script>
+     <script type="text/javascript" src="js/myctrl.js"></script>
+</head>
+
+<body  ng-app="myapp" ng-controller="myctrl">
+ 
+    <div class="container" >
+        <h2 class="text-center">Personal Information</h2>
+        <br>
+        <form name="form1" novalidate>
+           
+	             <input name="fname" type="text" placeholder="First Name" ng-model="fname" >
+	                          
+                <input name="email" type="email" placeholder="Email ID" ng-model="email" >
+            
+                <input name="password" type="password" placeholder="Password" ng-model="password">
+                
+           
+           <button ng-click="insert();" ng-if="addbtn" class="btn btn-primary waves-effect waves-light"> Add
+            </button>
+            <button ng-click=" update();" ng-if="updatebtn" class="btn btn-success waves-effect waves-light"> Update</button>
+
+     
+            
+        </form>
+        <table class="table table-hover">
+            <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Password</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+            </tr>
+            <tbody ng-init="select();">
+              <tr ng-repeat="item in items">
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.password}}</td>
+                <td>
+                    <button ng-click="edit(item.id, item.name, item.email, item.password);" class="btn btn-sm btn-info waves-effect waves-light">Update</button>
+                        </td>
+                <td>
+                  <button ng-click="delete(item.id);" class="btn btn-sm btn-danger waves-effect waves-light">Delete</button>
+                </td>
+              </tr>             
+            </tbody>
+        </table>
+         
+   
+    </div>
+    
+</body>
+
+</html>
